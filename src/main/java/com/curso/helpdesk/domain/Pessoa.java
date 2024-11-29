@@ -32,8 +32,6 @@ public abstract class Pessoa implements Serializable {
     @CollectionTable(name = "PERFIS")
     protected Set<Integer> perfis = new HashSet<>();
 
-    protected LocalDate dataNascimento;
-
     @JsonFormat(pattern = "dd/MM/yyyy")
     protected LocalDate dataCriacao = LocalDate.now();
 
@@ -58,14 +56,6 @@ public abstract class Pessoa implements Serializable {
 
     public void setDataCriacao(LocalDate dataCriacao) {
         this.dataCriacao = dataCriacao;
-    }
-
-    public LocalDate getDataNascimento() {
-        return dataNascimento;
-    }
-
-    public void setDataNascimento(LocalDate dataNascimento) {
-        this.dataNascimento = dataNascimento;
     }
 
     public Set<Perfil> getPerfis() {
