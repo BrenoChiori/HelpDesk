@@ -10,6 +10,7 @@ import com.curso.helpdesk.services.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,6 +36,14 @@ public class TecnicoService {
         validaPorCpfEEMail(objDTO);
         Tecnico newObj = new Tecnico(objDTO);
         return tecnicoRepository.save(newObj);
+    }
+
+    public Tecnico update(Integer id, @Valid TecnicoDTO objDTO) {
+        objDTO.setId(id);
+        Tecnico oldObj = findById(id);
+        validaPorCpfEEMail(objDTO);
+        oldObj = new Tecnico(objDTO);
+        return tecnicoRepository.save(oldObj);
     }
 
     private void validaPorCpfEEMail(TecnicoDTO objDTO) {
