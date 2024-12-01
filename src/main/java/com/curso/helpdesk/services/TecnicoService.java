@@ -8,6 +8,7 @@ import com.curso.helpdesk.repositories.TecnicoRepository;
 import com.curso.helpdesk.services.exceptions.DataIntegrityViolationException;
 import com.curso.helpdesk.services.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.validation.Valid;
@@ -21,6 +22,8 @@ public class TecnicoService {
     private TecnicoRepository tecnicoRepository;
     @Autowired
     private PessoaRepository pessoaRepository;
+    @Autowired
+    private BCryptPasswordEncoder encoder;
 
     public Tecnico findById(Integer id) {
         Optional<Tecnico> obj = tecnicoRepository.findById(id);
