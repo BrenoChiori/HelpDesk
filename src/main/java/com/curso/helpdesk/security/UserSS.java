@@ -12,8 +12,6 @@ import java.util.stream.Collectors;
 public class UserSS implements UserDetails {
     private static final long serialVersionUID = 1L;
 
-    //Parei no 35:53 - Aula 24
-
     private Integer id;
     private String email;
     private String senha;

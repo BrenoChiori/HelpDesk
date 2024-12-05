@@ -7,9 +7,7 @@ import com.curso.helpdesk.domain.enums.Perfil;
 import com.curso.helpdesk.domain.enums.Prioridade;
 import com.curso.helpdesk.domain.enums.Status;
 import com.curso.helpdesk.repositories.ChamadoRepository;
-import com.curso.helpdesk.repositories.ClienteRepository;
 import com.curso.helpdesk.repositories.PessoaRepository;
-import com.curso.helpdesk.repositories.TecnicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -21,10 +19,8 @@ public class DBService {
 
     @Autowired
     private PessoaRepository pessoaRepository;
-
     @Autowired
     private ChamadoRepository chamadoRepository;
-
     @Autowired
     private BCryptPasswordEncoder encoder;
 

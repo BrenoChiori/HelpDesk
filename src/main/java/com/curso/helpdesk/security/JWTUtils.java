@@ -13,7 +13,6 @@ public class JWTUtils {
 
     @Value("${jwt.expiration}")
     private Long expiration;
-
     @Value("${jwt.secret}")
     private String secret;
 
