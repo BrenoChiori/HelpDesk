@@ -1,12 +1,9 @@
 package com.curso.helpdesk.services;
 
-import com.curso.helpdesk.domain.Chamado;
-import com.curso.helpdesk.domain.Cliente;
-import com.curso.helpdesk.domain.Tecnico;
-import com.curso.helpdesk.domain.enums.Perfil;
-import com.curso.helpdesk.domain.enums.Prioridade;
-import com.curso.helpdesk.domain.enums.Status;
+import com.curso.helpdesk.domain.*;
+import com.curso.helpdesk.domain.enums.*;
 import com.curso.helpdesk.repositories.ChamadoRepository;
+import com.curso.helpdesk.repositories.FornecedorRepository;
 import com.curso.helpdesk.repositories.PessoaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -21,6 +18,8 @@ public class DBService {
     private PessoaRepository pessoaRepository;
     @Autowired
     private ChamadoRepository chamadoRepository;
+    @Autowired
+    private FornecedorRepository fornecedorRepository;
     @Autowired
     private BCryptPasswordEncoder encoder;
 
@@ -44,7 +43,13 @@ public class DBService {
         Chamado c4 = new Chamado(null, Prioridade.ALTA, Status.ABERTO, "Chamado 4", "Teste chamado 4", tec3, cli3);
         Chamado c5 = new Chamado(null, Prioridade.MEDIA, Status.ANDAMENTO, "Chamado 5", "Teste chamado 5", tec2, cli1);
         Chamado c6 = new Chamado(null, Prioridade.BAIXA, Status.ENCERRADO, "Chamado 7", "Teste chamado 6", tec1, cli5);
+
+        Fornecedor f1 = new Fornecedor(null, "Fornecedor Exemplo", TipoFornecedor.CNPJ, "12345678000123", "11999999999", "fornecedor@exemplo.com", new Endereco("Rua Exemplo", "123", "Sala 101", "Bairro Exemplo", "Cidade Exemplo", "SP", "12345-678") , StatusFornecedor.DESATIVADO, FormadeEntrega.ENTREGA);
+        Fornecedor f2 = new Fornecedor(null, "João da Silva", TipoFornecedor.CPF, "12345678900", "11988887777", "joao@exemplo.com", new Endereco("Rua Sem Nome", "45", "", "Vila Alegre", "São Paulo", "SP", "05400-000") , StatusFornecedor.ATIVO, FormadeEntrega.PRESENCIAL);
+        Fornecedor f3 = new Fornecedor(null, "Empresa Teste LTDA", TipoFornecedor.CNPJ, "98765432000122", "1133334444", "contato@empresateste.com", new Endereco("Avenida das Empresas", "500", "Bloco A", "Centro", "Rio de Janeiro", "RJ", "20000-000") , StatusFornecedor.ATIVO, FormadeEntrega.ENTREGA);
+
         pessoaRepository.saveAll(Arrays.asList(tec1, tec2, tec3, tec4, tec5, cli1, cli2, cli3, cli4, cli5));
         chamadoRepository.saveAll(Arrays.asList(c1, c2, c3, c4, c5, c6));
+        fornecedorRepository.saveAll(Arrays.asList(f1, f2, f3));
     }
 }
