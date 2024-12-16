@@ -5,6 +5,7 @@ import com.curso.helpdesk.domain.enums.*;
 import com.curso.helpdesk.repositories.ChamadoRepository;
 import com.curso.helpdesk.repositories.FornecedorRepository;
 import com.curso.helpdesk.repositories.PessoaRepository;
+import com.curso.helpdesk.repositories.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,8 @@ public class DBService {
     private ChamadoRepository chamadoRepository;
     @Autowired
     private FornecedorRepository fornecedorRepository;
+    @Autowired
+    private ProdutoRepository produtoRepository;
     @Autowired
     private BCryptPasswordEncoder encoder;
 
@@ -45,11 +48,28 @@ public class DBService {
         Chamado c6 = new Chamado(null, Prioridade.BAIXA, Status.ENCERRADO, "Chamado 7", "Teste chamado 6", tec1, cli5);
 
         Fornecedor f1 = new Fornecedor(null, "Fornecedor Exemplo", TipoFornecedor.CNPJ, "12345678000123", "11999999999", "fornecedor@exemplo.com", new Endereco("Rua Exemplo", "123", "Sala 101", "Bairro Exemplo", "Cidade Exemplo", "SP", "12345-678") , StatusFornecedor.DESATIVADO, FormadeEntrega.ENTREGA);
-        Fornecedor f2 = new Fornecedor(null, "João da Silva", TipoFornecedor.CPF, "12345678900", "11988887777", "joao@exemplo.com", new Endereco("Rua Sem Nome", "45", "", "Vila Alegre", "São Paulo", "SP", "05400-000") , StatusFornecedor.ATIVO, FormadeEntrega.PRESENCIAL);
-        Fornecedor f3 = new Fornecedor(null, "Empresa Teste LTDA", TipoFornecedor.CNPJ, "98765432000122", "1133334444", "contato@empresateste.com", new Endereco("Avenida das Empresas", "500", "Bloco A", "Centro", "Rio de Janeiro", "RJ", "20000-000") , StatusFornecedor.ATIVO, FormadeEntrega.ENTREGA);
+        Fornecedor f2 = new Fornecedor(null, "João da Silva", TipoFornecedor.CPF, "12345678900", "11988887777", "joao@exemplo.com", new Endereco("Rua Sem Nome", "45", "", "Vila Alegre", "São Paulo", "SP", "05400-000") , StatusFornecedor.ATIVO, FormadeEntrega.RETIRARPONTOCOLETA);
+        Fornecedor f3 = new Fornecedor(null, "Empresa Teste LTDA", TipoFornecedor.CNPJ, "98765432000122", "1133334444", "contato@empresateste.com", new Endereco("Avenida das Empresas", "500", "Bloco A", "Centro", "Rio de Janeiro", "RJ", "20000-000") , StatusFornecedor.ATIVO, FormadeEntrega.RETIRARLOJA);
+
+        Produto p1 = new Produto(null, "HP", "Tinta para Impressora 664");
+        Produto p2 = new Produto(null, "Kingston", "Memória RAM 8GB DDR4");
+        Produto p3 = new Produto(null, "Dell", "Notebook Inspiron 15 3000");
+        Produto p4 = new Produto(null, "Logitech", "Mouse Sem Fio M170");
+        Produto p5 = new Produto(null, "Acer", "Notebook Aspire 5");
+        Produto p6 = new Produto(null, "Brother", "Impressora Laser HL1212W");
+        Produto p7 = new Produto(null, "TP-Link", "Roteador Wi-Fi Archer C6");
+        Produto p8 = new Produto(null, "Seagate", "HD Externo 1TB");
+        Produto p9 = new Produto(null, "Samsung", "SSD 980 NVMe 500GB");
+        Produto p10 = new Produto(null, "Positivo", "Notebook Motion C");
+        Produto p11 = new Produto(null, "Epson", "Tinta para Impressora EcoTank L3250");
+        Produto p12 = new Produto(null, "HyperX", "Teclado Mecânico Alloy Origins");
+        Produto p13 = new Produto(null, "LG", "Monitor Ultrawide 29");
+        Produto p14 = new Produto(null, "Sony", "Headset Bluetooth WH-1000XM4");
+        Produto p15 = new Produto(null, "Corsair", "Fonte 650W 80 Plus Bronze");
 
         pessoaRepository.saveAll(Arrays.asList(tec1, tec2, tec3, tec4, tec5, cli1, cli2, cli3, cli4, cli5));
         chamadoRepository.saveAll(Arrays.asList(c1, c2, c3, c4, c5, c6));
         fornecedorRepository.saveAll(Arrays.asList(f1, f2, f3));
+        produtoRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15));
     }
 }

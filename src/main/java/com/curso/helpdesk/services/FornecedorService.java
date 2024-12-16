@@ -37,6 +37,10 @@ public class FornecedorService {
         return repository.save(oldObj);
     }
 
+    public void delete(Integer id) {
+        repository.deleteById(id);
+    }
+
     public Fornecedor newFornecedor(FornecedorDTO obj) {
         Fornecedor fornecedor = new Fornecedor();
         

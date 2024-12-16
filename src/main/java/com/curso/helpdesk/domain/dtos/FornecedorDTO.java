@@ -12,23 +12,23 @@ import java.io.Serializable;
 public class FornecedorDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    protected Integer id;
+    private Integer id;
     @NotNull(message = "O campo Nome e requerido")
-    protected String nome;
+    private String nome;
     @NotNull(message = "O campo Email e requerido")
-    protected String email;
+    private String email;
     @NotNull(message = "O campo Telefone e requerido")
-    protected String telefone;
+    private String telefone;
     @NotNull(message = "O campo Documento e requerido")
-    protected String documento;
+    private String documento;
     @NotNull(message = "O campo CPF/CNPJ e requerido")
-    protected TipoFornecedor tipoFornecedor;
+    private TipoFornecedor tipoFornecedor;
     @NotNull(message = "O campo Endereço e requerido")
-    protected Endereco endereco;
+    private Endereco endereco;
     @NotNull(message = "O campo Status e requerido")
-    protected StatusFornecedor statusFornecedor;
+    private StatusFornecedor statusFornecedor;
     @NotNull(message = "O campo Entrega e requerido")
-    protected FormadeEntrega formadeEntrega;
+    private FormadeEntrega formadeEntrega;
 
     public FornecedorDTO() {
         super();

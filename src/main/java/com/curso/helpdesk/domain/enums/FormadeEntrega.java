@@ -1,7 +1,7 @@
 package com.curso.helpdesk.domain.enums;
 
 public enum FormadeEntrega {
-    PRESENCIAL("PRESENCIAL"), ENTREGA("ENTREGA");
+    RETIRARLOJA("RETIRAR NA LOJA"), RETIRARPONTOCOLETA("RETIRAR NO PONTO DE COLETA") , ENTREGA("ENTREGA DOMICILIAR");
 
     private String descricao;
 

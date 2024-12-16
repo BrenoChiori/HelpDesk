@@ -46,4 +46,10 @@ public class FornecedorResource {
         Fornecedor newObj = service.update(id, objDTO);
         return ResponseEntity.ok().body(new FornecedorDTO(newObj));
     }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<FornecedorDTO> delete(@PathVariable Integer id) {
+        service.delete(id);
+        return ResponseEntity.noContent().build();
+    }
 }
