@@ -5,12 +5,9 @@ import com.curso.helpdesk.domain.enums.StatusFornecedor;
 import com.curso.helpdesk.domain.enums.TipoFornecedor;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
-public class Fornecedor implements Serializable {
-    private static final long serialVersionUID = 1L;
-
+public class Fornecedor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
