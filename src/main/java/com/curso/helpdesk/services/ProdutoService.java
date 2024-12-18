@@ -1,5 +1,6 @@
 package com.curso.helpdesk.services;
 
+import com.curso.helpdesk.domain.Fornecedor;
 import com.curso.helpdesk.domain.Produto;
 import com.curso.helpdesk.domain.dtos.ProdutoDTO;
 import com.curso.helpdesk.repositories.ProdutoRepository;
@@ -16,6 +17,8 @@ public class ProdutoService {
 
     @Autowired
     private ProdutoRepository repository;
+    @Autowired
+    private FornecedorService fornecedorService;
 
     public Produto findById(Integer id) {
         Optional<Produto> produto = repository.findById(id);
@@ -42,6 +45,7 @@ public class ProdutoService {
     }
 
     public Produto newProduto(ProdutoDTO obj) {
+        Fornecedor fornecedor = fornecedorService.findById(obj.getFornecedor());
         Produto produto = new Produto();
 
         if(obj.getId() != null) {
@@ -50,6 +54,7 @@ public class ProdutoService {
 
         produto.setMarca(obj.getMarca());
         produto.setNomeProduto(obj.getNomeProduto());
+        produto.setFornecedor(fornecedor);
         return produto;
     }
 }

@@ -13,6 +13,8 @@ public class ProdutoDTO implements Serializable {
     private String marca;
     @NotNull(message = "O campo Nome Produto e requerido")
     private String nomeProduto;
+    @NotNull(message = "O campo Nome Fornecedor e requerido")
+    private Integer fornecedor;
 
     public ProdutoDTO() {
         super();
@@ -22,6 +24,15 @@ public class ProdutoDTO implements Serializable {
         this.id = obj.getId();
         this.marca = obj.getMarca();
         this.nomeProduto = obj.getNomeProduto();
+        this.fornecedor = obj.getFornecedor().getId();
+    }
+
+    public Integer getFornecedor() {
+        return fornecedor;
+    }
+
+    public void setFornecedor(Integer fornecedor) {
+        this.fornecedor = fornecedor;
     }
 
     public Integer getId() {

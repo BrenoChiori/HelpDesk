@@ -1,9 +1,6 @@
 package com.curso.helpdesk.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
@@ -15,15 +12,18 @@ public class Produto implements Serializable {
     private Integer id;
     private String marca;
     private String nomeProduto;
+    @ManyToOne
+    private Fornecedor fornecedor;
 
     public Produto() {
         super();
     }
 
-    public Produto(Integer id, String marca, String nomeProduto) {
+    public Produto(Integer id, String marca, String nomeProduto, Fornecedor fornecedor) {
         this.id = id;
         this.marca = marca;
         this.nomeProduto = nomeProduto;
+        this.fornecedor = fornecedor;
     }
 
     public Integer getId() {
@@ -48,5 +48,13 @@ public class Produto implements Serializable {
 
     public void setNomeProduto(String nomeProduto) {
         this.nomeProduto = nomeProduto;
+    }
+
+    public Fornecedor getFornecedor() {
+        return fornecedor;
+    }
+
+    public void setFornecedor(Fornecedor fornecedor) {
+        this.fornecedor = fornecedor;
     }
 }
