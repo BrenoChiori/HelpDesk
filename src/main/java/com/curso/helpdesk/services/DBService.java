@@ -8,7 +8,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
 
 @Service
 public class DBService {
@@ -25,6 +29,8 @@ public class DBService {
     private ProdutosPedidosRepository produtosPedidosRepository;
     @Autowired
     private BCryptPasswordEncoder encoder;
+    @Autowired
+    private PedidosRepository pedidosRepository;
 
     public void instanciaDB() {
         Tecnico tec1 = new Tecnico(null, "Valdir Cezar", "550.482.150-95", "valdir@mail.com", encoder.encode("123"));
@@ -67,26 +73,17 @@ public class DBService {
         Produto p14 = new Produto(null, "Sony", "Headset Bluetooth WH-1000XM4", f3);
         Produto p15 = new Produto(null, "Corsair", "Fonte 650W 80 Plus Bronze", f1);
 
-        ProdutosPedidos pp1 = new ProdutosPedidos(null, p1, 50, f1, new BigDecimal("259.99"));
-        ProdutosPedidos pp2 = new ProdutosPedidos(null, p2, 30, f2, new BigDecimal("329.90"));
-        ProdutosPedidos pp3 = new ProdutosPedidos(null, p3, 10, f3, new BigDecimal("3899.99"));
-        ProdutosPedidos pp4 = new ProdutosPedidos(null, p4, 100, f1, new BigDecimal("79.90"));
-        ProdutosPedidos pp5 = new ProdutosPedidos(null, p5, 20, f2, new BigDecimal("2799.99"));
-        ProdutosPedidos pp6 = new ProdutosPedidos(null, p6, 15, f3, new BigDecimal("999.90"));
-        ProdutosPedidos pp7 = new ProdutosPedidos(null, p7, 40, f1, new BigDecimal("249.90"));
-        ProdutosPedidos pp8 = new ProdutosPedidos(null, p8, 25, f2, new BigDecimal("399.90"));
-        ProdutosPedidos pp9 = new ProdutosPedidos(null, p9, 35, f3, new BigDecimal("499.90"));
-        ProdutosPedidos pp10 = new ProdutosPedidos(null, p10, 12, f1, new BigDecimal("1499.99"));
-        ProdutosPedidos pp11 = new ProdutosPedidos(null, p11, 60, f2, new BigDecimal("129.99"));
-        ProdutosPedidos pp12 = new ProdutosPedidos(null, p12, 8, f3, new BigDecimal("699.90"));
-        ProdutosPedidos pp13 = new ProdutosPedidos(null, p13, 18, f1, new BigDecimal("1199.90"));
-        ProdutosPedidos pp14 = new ProdutosPedidos(null, p14, 22, f2, new BigDecimal("1799.90"));
-        ProdutosPedidos pp15 = new ProdutosPedidos(null, p15, 10, f3, new BigDecimal("549.90"));
+        Pedidos ped1 = new Pedidos(null, Status.ANDAMENTO, new BigDecimal("1499.99"));
+        Pedidos ped2 = new Pedidos(null, Status.ANDAMENTO, new BigDecimal("199.99"));
+        Pedidos ped3 = new Pedidos(null, Status.ANDAMENTO, new BigDecimal("209.75"));
+        Pedidos ped4 = new Pedidos(null, Status.ANDAMENTO, new BigDecimal("304.90"));
+        Pedidos ped5 = new Pedidos(null, Status.ANDAMENTO, new BigDecimal("14523.68"));
+        Pedidos ped6 = new Pedidos(null, Status.ANDAMENTO, new BigDecimal("1223.73"));
 
         pessoaRepository.saveAll(Arrays.asList(tec1, tec2, tec3, tec4, tec5, cli1, cli2, cli3, cli4, cli5));
         chamadoRepository.saveAll(Arrays.asList(c1, c2, c3, c4, c5, c6));
         fornecedorRepository.saveAll(Arrays.asList(f1, f2, f3));
         produtoRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15));
-        produtosPedidosRepository.saveAll(Arrays.asList(pp1, pp2, pp3, pp4, pp5, pp6, pp7, pp8, pp9, pp10, pp11, pp12, pp13, pp14, pp15));
+        pedidosRepository.saveAll(Arrays.asList(ped1, ped2, ped3, ped4, ped5, ped6));
     }
 }
