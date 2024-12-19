@@ -6,13 +6,13 @@ import java.io.Serializable;
 @Entity
 public class Produto implements Serializable {
     private static final long serialVersionUID = 1L;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String marca;
     private String nomeProduto;
     @ManyToOne
+    @JoinColumn(name = "fornecedor_id")
     private Fornecedor fornecedor;
 
     public Produto() {
