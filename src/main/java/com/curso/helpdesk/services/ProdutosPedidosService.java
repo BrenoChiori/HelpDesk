@@ -40,8 +40,7 @@ public class ProdutosPedidosService {
 
     public ProdutosPedidos update(Integer id, @Valid ProdutosPedidosDTO objDTO) {
         objDTO.setId(id);
-        ProdutosPedidos oldObj = findById(id);
-        oldObj = newProdutosPedidos(objDTO);
+        ProdutosPedidos oldObj = newProdutosPedidos(objDTO);
         return repository.save(oldObj);
     }
 

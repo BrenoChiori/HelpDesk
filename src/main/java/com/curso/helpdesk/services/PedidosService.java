@@ -34,8 +34,7 @@ public class PedidosService {
 
     public Pedidos update(Integer id, @Valid PedidosDTO objDTO) {
         objDTO.setId(id);
-        Pedidos oldObj = findById(id);
-        oldObj = newPedido(objDTO);
+        Pedidos oldObj = newPedido(objDTO);
         return repository.save(oldObj);
     }
 

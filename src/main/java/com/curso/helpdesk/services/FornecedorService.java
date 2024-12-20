@@ -32,8 +32,7 @@ public class FornecedorService {
 
     public Fornecedor update(Integer id, @Valid FornecedorDTO objDTO) {
         objDTO.setId(id);
-        Fornecedor oldObj = findById(id);
-        oldObj = newFornecedor(objDTO);
+        Fornecedor oldObj = newFornecedor(objDTO);
         return repository.save(oldObj);
     }
 
