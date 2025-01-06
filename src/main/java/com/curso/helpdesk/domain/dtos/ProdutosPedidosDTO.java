@@ -1,5 +1,8 @@
 package com.curso.helpdesk.domain.dtos;
 
+import com.curso.helpdesk.domain.Fornecedor;
+import com.curso.helpdesk.domain.Pedidos;
+import com.curso.helpdesk.domain.Produto;
 import com.curso.helpdesk.domain.ProdutosPedidos;
 
 import javax.validation.constraints.NotNull;
@@ -11,13 +14,13 @@ public class ProdutosPedidosDTO implements Serializable {
 
     private Integer id;
     @NotNull(message = "O campo Produto e requerido")
-    private Integer produto;
+    private Produto produto;
     @NotNull(message = "O campo Quantidade e requerido")
     private Integer quantidade;
     @NotNull(message = "O campo Fornecedor e requerido")
-    private Integer fornecedor;
+    private Fornecedor fornecedor;
     @NotNull(message = "O campo Pedidos e requerido")
-    private Integer pedidos;
+    private Pedidos pedidos;
     @NotNull(message = "O campo Valor e requerido")
     private BigDecimal valor;
 
@@ -27,10 +30,10 @@ public class ProdutosPedidosDTO implements Serializable {
 
     public ProdutosPedidosDTO(ProdutosPedidos obj) {
         this.id = obj.getId();
-        this.produto = obj.getProduto().getId();
+        this.produto = obj.getProduto();
         this.quantidade = obj.getQuantidade();
-        this.fornecedor = obj.getFornecedor().getId();
-        this.pedidos = obj.getPedidos().getId();
+        this.fornecedor = obj.getFornecedor();
+        this.pedidos = obj.getPedidos();
         this.valor = obj.getValor();
     }
 
@@ -42,14 +45,6 @@ public class ProdutosPedidosDTO implements Serializable {
         this.id = id;
     }
 
-    public Integer getProduto() {
-        return produto;
-    }
-
-    public void setProduto(Integer produto) {
-        this.produto = produto;
-    }
-
     public Integer getQuantidade() {
         return quantidade;
     }
@@ -58,11 +53,19 @@ public class ProdutosPedidosDTO implements Serializable {
         this.quantidade = quantidade;
     }
 
-    public Integer getFornecedor() {
+    public Produto getProduto() {
+        return produto;
+    }
+
+    public void setProduto(Produto produto) {
+        this.produto = produto;
+    }
+
+    public Fornecedor getFornecedor() {
         return fornecedor;
     }
 
-    public void setFornecedor(Integer fornecedor) {
+    public void setFornecedor(Fornecedor fornecedor) {
         this.fornecedor = fornecedor;
     }
 
@@ -74,11 +77,11 @@ public class ProdutosPedidosDTO implements Serializable {
         this.valor = valor;
     }
 
-    public Integer getPedidos() {
+    public Pedidos getPedidos() {
         return pedidos;
     }
 
-    public void setPedidos(Integer pedidos) {
+    public void setPedidos(Pedidos pedidos) {
         this.pedidos = pedidos;
     }
 }

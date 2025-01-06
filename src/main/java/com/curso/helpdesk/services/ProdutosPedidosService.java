@@ -49,19 +49,16 @@ public class ProdutosPedidosService {
     }
 
     private ProdutosPedidos newProdutosPedidos(ProdutosPedidosDTO obj) {
-        Produto produto = produtoService.findById(obj.getProduto());
-        Fornecedor fornecedor = fornecedorService.findById(obj.getFornecedor());
-        Pedidos pedidos = pedidosService.findById(obj.getPedidos());
 
         ProdutosPedidos produtosPedidos = new ProdutosPedidos();
         if(obj.getId() != null) {
             produtosPedidos.setId(obj.getId());
         }
 
-        produtosPedidos.setProduto(produto);
+        produtosPedidos.setProduto(obj.getProduto());
         produtosPedidos.setQuantidade(obj.getQuantidade());
-        produtosPedidos.setFornecedor(fornecedor);
-        produtosPedidos.setPedidos(pedidos);
+        produtosPedidos.setFornecedor(obj.getFornecedor());
+        produtosPedidos.setPedidos(obj.getPedidos());
         produtosPedidos.setValor(obj.getValor());
         return produtosPedidos;
     }
