@@ -27,10 +27,6 @@ public class Fornecedor {
     @Enumerated(EnumType.STRING)
     private FormadeEntrega formadeEntrega;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "fornecedor", cascade = CascadeType.ALL)
-    private List<Produto> produtos = new ArrayList<>();
-
     public Fornecedor() {
         super();
     }
@@ -45,14 +41,6 @@ public class Fornecedor {
         this.endereco = endereco;
         this.statusFornecedor = statusFornecedor;
         this.formadeEntrega = formadeEntrega;
-    }
-
-    public List<Produto> getProdutos() {
-        return produtos;
-    }
-
-    public void setProdutos(List<Produto> produtos) {
-        this.produtos = produtos;
     }
 
     public Integer getId() {

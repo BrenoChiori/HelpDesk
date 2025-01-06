@@ -57,21 +57,21 @@ public class DBService {
         Fornecedor f2 = new Fornecedor(null, "João da Silva", TipoFornecedor.CPF, "12345678900", "11988887777", "joao@exemplo.com", new Endereco("Rua Sem Nome", "45", "", "Vila Alegre", "São Paulo", "SP", "05400-000") , StatusFornecedor.ATIVO, FormadeEntrega.RETIRARPONTOCOLETA);
         Fornecedor f3 = new Fornecedor(null, "Empresa Teste LTDA", TipoFornecedor.CNPJ, "98765432000122", "1133334444", "contato@empresateste.com", new Endereco("Avenida das Empresas", "500", "Bloco A", "Centro", "Rio de Janeiro", "RJ", "20000-000") , StatusFornecedor.ATIVO, FormadeEntrega.RETIRARLOJA);
 
-        Produto p1 = new Produto(null, "HP", "Tinta para Impressora 664", f2);
-        Produto p2 = new Produto(null, "Kingston", "Memória RAM 8GB DDR4", f1);
-        Produto p3 = new Produto(null, "Dell", "Notebook Inspiron 15 3000", f2);
-        Produto p4 = new Produto(null, "Logitech", "Mouse Sem Fio M170", f3);
-        Produto p5 = new Produto(null, "Acer", "Notebook Aspire 5", f2);
-        Produto p6 = new Produto(null, "Brother", "Impressora Laser HL1212W",f2);
-        Produto p7 = new Produto(null, "TP-Link", "Roteador Wi-Fi Archer C6", f2);
-        Produto p8 = new Produto(null, "Seagate", "HD Externo 1TB",f1);
-        Produto p9 = new Produto(null, "Samsung", "SSD 980 NVMe 500GB", f1);
-        Produto p10 = new Produto(null, "Positivo", "Notebook Motion C", f1);
-        Produto p11 = new Produto(null, "Epson", "Tinta para Impressora EcoTank L3250", f2);
-        Produto p12 = new Produto(null, "HyperX", "Teclado Mecânico Alloy Origins", f3);
-        Produto p13 = new Produto(null, "LG", "Monitor Ultrawide 29", f3);
-        Produto p14 = new Produto(null, "Sony", "Headset Bluetooth WH-1000XM4", f3);
-        Produto p15 = new Produto(null, "Corsair", "Fonte 650W 80 Plus Bronze", f1);
+        Produto p1 = new Produto(null, "HP", "Tinta para Impressora 664");
+        Produto p2 = new Produto(null, "Kingston", "Memória RAM 8GB DDR4");
+        Produto p3 = new Produto(null, "Dell", "Notebook Inspiron 15 3000");
+        Produto p4 = new Produto(null, "Logitech", "Mouse Sem Fio M170");
+        Produto p5 = new Produto(null, "Acer", "Notebook Aspire 5");
+        Produto p6 = new Produto(null, "Brother", "Impressora Laser HL1212W");
+        Produto p7 = new Produto(null, "TP-Link", "Roteador Wi-Fi Archer C6");
+        Produto p8 = new Produto(null, "Seagate", "HD Externo 1TB");
+        Produto p9 = new Produto(null, "Samsung", "SSD 980 NVMe 500GB");
+        Produto p10 = new Produto(null, "Positivo", "Notebook Motion C");
+        Produto p11 = new Produto(null, "Epson", "Tinta para Impressora EcoTank L3250");
+        Produto p12 = new Produto(null, "HyperX", "Teclado Mecânico Alloy Origins");
+        Produto p13 = new Produto(null, "LG", "Monitor Ultrawide 29");
+        Produto p14 = new Produto(null, "Sony", "Headset Bluetooth WH-1000XM4");
+        Produto p15 = new Produto(null, "Corsair", "Fonte 650W 80 Plus Bronze");
 
         Pedidos ped1 = new Pedidos(null, Status.ANDAMENTO, new BigDecimal("1499.99"));
         Pedidos ped2 = new Pedidos(null, Status.ANDAMENTO, new BigDecimal("199.99"));

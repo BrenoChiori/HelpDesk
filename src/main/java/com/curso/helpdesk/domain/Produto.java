@@ -11,19 +11,15 @@ public class Produto implements Serializable {
     private Integer id;
     private String marca;
     private String nomeProduto;
-    @ManyToOne
-    @JoinColumn(name = "fornecedor_id")
-    private Fornecedor fornecedor;
 
     public Produto() {
         super();
     }
 
-    public Produto(Integer id, String marca, String nomeProduto, Fornecedor fornecedor) {
+    public Produto(Integer id, String marca, String nomeProduto) {
         this.id = id;
         this.marca = marca;
         this.nomeProduto = nomeProduto;
-        this.fornecedor = fornecedor;
     }
 
     public Integer getId() {
@@ -48,13 +44,5 @@ public class Produto implements Serializable {
 
     public void setNomeProduto(String nomeProduto) {
         this.nomeProduto = nomeProduto;
-    }
-
-    public Fornecedor getFornecedor() {
-        return fornecedor;
-    }
-
-    public void setFornecedor(Fornecedor fornecedor) {
-        this.fornecedor = fornecedor;
     }
 }
