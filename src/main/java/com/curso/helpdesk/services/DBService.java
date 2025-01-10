@@ -76,14 +76,11 @@ public class DBService {
         Pedidos ped1 = new Pedidos(null, Status.ANDAMENTO, new BigDecimal("1499.99"));
         Pedidos ped2 = new Pedidos(null, Status.ANDAMENTO, new BigDecimal("199.99"));
         Pedidos ped3 = new Pedidos(null, Status.ANDAMENTO, new BigDecimal("209.75"));
-        Pedidos ped4 = new Pedidos(null, Status.ANDAMENTO, new BigDecimal("304.90"));
-        Pedidos ped5 = new Pedidos(null, Status.ANDAMENTO, new BigDecimal("14523.68"));
-        Pedidos ped6 = new Pedidos(null, Status.ANDAMENTO, new BigDecimal("1223.73"));
 
         pessoaRepository.saveAll(Arrays.asList(tec1, tec2, tec3, tec4, tec5, cli1, cli2, cli3, cli4, cli5));
         chamadoRepository.saveAll(Arrays.asList(c1, c2, c3, c4, c5, c6));
         fornecedorRepository.saveAll(Arrays.asList(f1, f2, f3));
         produtoRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15));
-        pedidosRepository.saveAll(Arrays.asList(ped1, ped2, ped3, ped4, ped5, ped6));
+        pedidosRepository.saveAll(Arrays.asList(ped1, ped2, ped3));
     }
 }
