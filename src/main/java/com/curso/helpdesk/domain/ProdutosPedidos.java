@@ -1,5 +1,6 @@
 package com.curso.helpdesk.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
@@ -10,17 +11,16 @@ public class ProdutosPedidos {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "produtos_id")
     private Produto produto;
     private Integer quantidade;
-    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "fornecedor_id")
     private Fornecedor fornecedor;
-    @JsonIgnore
+
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name = "pedidos_id")
     private Pedidos pedidos;
     private BigDecimal valor;
