@@ -31,8 +31,8 @@ public class PedidosService {
     }
 
     public Pedidos update(Integer id, @Valid Pedidos obj) {
-        obj.setId(id);
-        Pedidos oldObj = newPedido(obj);
+        Pedidos oldObj = findById(id);
+        updatePedido(oldObj, obj);
         return repository.save(oldObj);
     }
 
@@ -40,20 +40,10 @@ public class PedidosService {
         repository.deleteById(id);
     }
 
-    private Pedidos newPedido(Pedidos obj) {
-        Pedidos pedido = new Pedidos();
-        if(obj.getId() != null) {
-            pedido.setId(obj.getId());
-        }
-
-        if(obj.getStatus().equals(2)){
-            pedido.setDataEntrega(LocalDate.now());
-        }
-
-        pedido.setDataPedido(obj.getDataPedido());
-        pedido.setDataEntrega(obj.getDataEntrega());
-        pedido.setStatus(obj.getStatus());
-        pedido.setValorTotal(obj.getValorTotal());
-        return pedido;
+    private void updatePedido(Pedidos oldObj, Pedidos obj) {
+        oldObj.setDataPedido(obj.getDataPedido());
+        oldObj.setStatus(obj.getStatus());
+        oldObj.setValorTotal(obj.getValorTotal());
+        oldObj.setListaProdutos(obj.getListaProdutos());
     }
 }
