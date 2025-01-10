@@ -1,8 +1,6 @@
 package com.curso.helpdesk.services;
 
 import com.curso.helpdesk.domain.Pedidos;
-import com.curso.helpdesk.domain.dtos.PedidosDTO;
-import com.curso.helpdesk.domain.enums.Status;
 import com.curso.helpdesk.repositories.PedidosRepository;
 import com.curso.helpdesk.services.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,13 +26,13 @@ public class PedidosService {
         return repository.findAll();
     }
 
-    public Pedidos create(PedidosDTO objDTO) {
-        return repository.save(newPedido(objDTO));
+    public Pedidos create(Pedidos obj) {
+        return repository.save(obj);
     }
 
-    public Pedidos update(Integer id, @Valid PedidosDTO objDTO) {
-        objDTO.setId(id);
-        Pedidos oldObj = newPedido(objDTO);
+    public Pedidos update(Integer id, @Valid Pedidos obj) {
+        obj.setId(id);
+        Pedidos oldObj = newPedido(obj);
         return repository.save(oldObj);
     }
 
@@ -42,7 +40,7 @@ public class PedidosService {
         repository.deleteById(id);
     }
 
-    private Pedidos newPedido(PedidosDTO obj) {
+    private Pedidos newPedido(Pedidos obj) {
         Pedidos pedido = new Pedidos();
         if(obj.getId() != null) {
             pedido.setId(obj.getId());
@@ -54,7 +52,7 @@ public class PedidosService {
 
         pedido.setDataPedido(obj.getDataPedido());
         pedido.setDataEntrega(obj.getDataEntrega());
-        pedido.setStatus(Status.toEnum(obj.getStatus()));
+        pedido.setStatus(obj.getStatus());
         pedido.setValorTotal(obj.getValorTotal());
         return pedido;
     }

@@ -1,7 +1,9 @@
 package com.curso.helpdesk.domain;
 
 import com.curso.helpdesk.domain.enums.Status;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -22,6 +24,7 @@ public class Pedidos {
     private Status status;
     private BigDecimal valorTotal;
 
+    @JsonManagedReference
     @OneToMany(mappedBy= "pedidos", cascade = CascadeType.ALL)
     private List<ProdutosPedidos> listaProdutos = new ArrayList<>();
 

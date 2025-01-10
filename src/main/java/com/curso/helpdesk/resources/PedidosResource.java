@@ -1,7 +1,6 @@
 package com.curso.helpdesk.resources;
 
 import com.curso.helpdesk.domain.Pedidos;
-import com.curso.helpdesk.domain.dtos.PedidosDTO;
 import com.curso.helpdesk.services.PedidosService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -11,7 +10,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value = "/pedidos")
@@ -21,33 +19,33 @@ public class PedidosResource {
     private PedidosService service;
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<PedidosDTO> findById(@PathVariable Integer id) {
+    public ResponseEntity<Pedidos> findById(@PathVariable Integer id) {
         Pedidos obj = service.findById(id);
-        return ResponseEntity.ok().body(new PedidosDTO(obj));
+        return ResponseEntity.ok().body(obj);
     }
 
     @GetMapping
-    public ResponseEntity<List<PedidosDTO>> findAll() {
+    public ResponseEntity<List<Pedidos>> findAll() {
         List<Pedidos> list = service.findAll();
-        List<PedidosDTO> listDTO = list.stream().map(obj -> new PedidosDTO(obj)).collect(Collectors.toList());
-        return ResponseEntity.ok(listDTO);
+//        List<PedidosDTO> listDTO = list.stream().map(obj -> new PedidosDTO(obj)).collect(Collectors.toList());
+        return ResponseEntity.ok(list);
     }
 
     @PostMapping
-    public ResponseEntity<PedidosDTO> create(@Valid @RequestBody PedidosDTO objDto) {
-        Pedidos newObj = service.create(objDto);
+    public ResponseEntity<Pedidos> create(@RequestBody Pedidos obj) {
+        Pedidos newObj = service.create(obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newObj.getId()).toUri();
         return ResponseEntity.created(uri).build();
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<PedidosDTO> update(@PathVariable Integer id, @Valid @RequestBody PedidosDTO objDTO) {
-        Pedidos newObj = service.update(id, objDTO);
-        return ResponseEntity.ok(new PedidosDTO(newObj));
+    public ResponseEntity<Pedidos> update(@PathVariable Integer id, @Valid @RequestBody Pedidos obj) {
+        service.update(id, obj);
+        return ResponseEntity.ok(obj);
     }
 
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity<PedidosDTO> delete(@PathVariable Integer id) {
+    public ResponseEntity<Pedidos> delete(@PathVariable Integer id) {
         service.delete(id);
         return ResponseEntity.noContent().build();
     }
